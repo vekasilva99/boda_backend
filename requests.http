@@ -1,0 +1,12 @@
+# POST http://localhost:9000/invitaciones/nueva HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "titulo":"Valeska Silva",
+#     "invites":1,
+#     "email":"vekasilva99@gmail.c"
+# }
+
+GET http://localhost:9000/invitaciones/626700ca824e02836c43b569 HTTP/1.1
+Content-Type: application/json
+
