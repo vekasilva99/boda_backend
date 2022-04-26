@@ -7,6 +7,6 @@
 #     "email":"vekasilva99@gmail.c"
 # }
 
-GET http://localhost:9000/invitaciones/626700ca824e02836c43b569 HTTP/1.1
+GET https://bodabackend.herokuapp.com/invitaciones/626700ca824e02836c43b569 HTTP/1.1
 Content-Type: application/json
 
