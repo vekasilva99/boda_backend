@@ -86,41 +86,62 @@ router.get("/:id", (req, res) => {
 
 router.post("/rsvp/:id", (req, res) => {
 
-  Invitacion.findById(req.params.id)
-    .then((item) => {
-        if(Boolean(item)){
-          const {
-            rsvp
-          } = req.body
-    
-          Invitacion.findByIdAndUpdate(
-            {_id: req.params.id}, 
-            {
-              rsvp,
-              respondido:true
-            }, 
-            {
-              returnOriginal: false, 
-              useFindAndModify: false 
-            }
-          )
-      return res.status(200).json({
-        success: true,
-        data: item,
-      });
-    }else{
-        return res.status(404).json({
-            success: false,
-            message: 'No se pudo realizar la operación'
+
+
+
+    Invitacion.findById(req.params.id)
+    .then( item => {
+
+      if(Boolean(item)){
+
+        const {
+          rsvp
+        } = req.body
+
+        Invitacion.findByIdAndUpdate(
+          {_id: req.params.id}, 
+          {
+            rsvp,
+            respondido:true
+          }, 
+          {
+            returnOriginal: false, 
+            useFindAndModify: false 
+          }
+        )
+        .then((data) => {
+          return res.status(200).json({
+            success: true,
+            data: data,
+            message: 'Solicitud realizada'
           })
-    }
+        })
+        .catch(err => {
+          return res.status(500).json({
+            success: false,
+            message: 'Server error: ' + err
+          })
+        });
+
+      } else {
+
+        return res.status(404).json({
+          success: false,
+          message: 'Algo salio mal.'
+        });
+
+      }
+
     })
-    .catch((err) => {
+    .catch( err => {
       return res.status(500).json({
         success: false,
-        message: "Server error: " + err,
+        message: 'Server error: ' + err
       });
     });
+
+
+
 });
 
 module.exports = router;
