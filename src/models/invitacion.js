@@ -21,6 +21,10 @@ const invitacionSchema = new Schema({
         type: Number,
         required: true,
     },
+    respondido: {
+        type: Boolean,
+        required: true,
+    },
 
 });
 

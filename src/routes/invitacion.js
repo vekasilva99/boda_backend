@@ -21,6 +21,7 @@ router.post("/nueva", (req, res) => {
           titulo,
           invites,
           rsvp: 0,
+          respondido:null
         });
         newInvitacion
           .save()
